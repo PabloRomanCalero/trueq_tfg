@@ -12,16 +12,18 @@ import 'package:trueq/splash_screen.dart';
 import 'package:trueq/utils/constants/supabase_constants.dart';
 import 'package:trueq/utils/themes.dart';
 import 'package:trueq/utils/constants/text_strings.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'data/authentication_repository.dart';
 import 'screens/signup/success_screen.dart';
 
+late final SupabaseClient supabase;
+late final SupabaseClient supabaseAdmin;
 
-final supabaseAdmin = SupabaseClient(SupabaseTrueq.url, SupabaseTrueq.service_role);
-final supabase = Supabase.instance.client;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  supabaseAdmin = SupabaseClient(SupabaseTrueq.url, SupabaseTrueq.serviceRole);
   await MobileAds.instance.initialize();
   Get.put(TextsTrueq());
   await GetStorage.init();
@@ -29,7 +31,8 @@ void main() async {
     url: SupabaseTrueq.url,
     anonKey: SupabaseTrueq.anonKey,
   );
-  OneSignal.initialize('68df6e32-d8f2-4c69-8859-0a1ed1571559');
+  supabase = Supabase.instance.client;
+  OneSignal.initialize(OneSignalKeys.appId);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown

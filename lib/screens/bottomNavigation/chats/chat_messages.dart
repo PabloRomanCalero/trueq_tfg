@@ -11,6 +11,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:trueq/main.dart';
 import 'package:trueq/utils/constants/colors.dart';
 import 'package:trueq/utils/constants/sizes.dart';
+import 'package:trueq/utils/constants/supabase_constants.dart';
 import 'package:trueq/utils/constants/text_strings.dart';
 import 'package:trueq/utils/helper_functions.dart';
 
@@ -83,13 +84,13 @@ class _ChatMessagesState extends State<ChatMessages> {
   }
 
   Future<void> sendPushNotification(List<String> playerIds, String message) async {
-    final String appId = '68df6e32-d8f2-4c69-8859-0a1ed1571559';
+    final String appId = OneSignalKeys.appId;
     final url = Uri.parse('https://onesignal.com/api/v1/notifications');
 
     final headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'os_v2_app_ndpw4mwy6jggtcczbipncvyvlf2fzhsuvhjuiqfy4dtp7fjz6yo23vsxmbj4cseugsmyc6ihjrckswnomtrukem37n42uwhgniziiua',
+      'Authorization': OneSignalKeys.restApiKey,
     };
 
     final body = jsonEncode({

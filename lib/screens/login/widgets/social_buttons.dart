@@ -10,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:trueq/utils/constants/image_strings.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/constants/supabase_constants.dart';
 import '../../bottomNavigation/navigation_menu.dart';
 import '../../../main.dart';
 
@@ -43,8 +44,8 @@ class _SocialButtonsState extends State<SocialButtons> {
   }
 
   Future<void> _signInWithGoogle() async {
-    const webClientId = '374383638060-pbmmhs29ibfq5o6bve87as9tuhrj84k6.apps.googleusercontent.com';
-    const iosClientId = '374383638060-grq1cobqh0me18mvj2bfqe4qkqgrrsol.apps.googleusercontent.com';
+    final webClientId = GoogleAuthKeys.webClientId;
+    final iosClientId = GoogleAuthKeys.iosClientId;
 
     final GoogleSignIn googleSignIn = GoogleSignIn(
       clientId: iosClientId,

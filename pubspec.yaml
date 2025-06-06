@@ -56,6 +56,7 @@ dependencies:
   flutter_chat_bubble: ^2.0.2
   flutter_screenutil: ^5.9.3
   rive: ^0.13.20
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - .env
     - assets/logo/trueq_logo.png
     - assets/logo/logo_transparent.png
     - assets/on_boarding_images/onBoardingImage1.png

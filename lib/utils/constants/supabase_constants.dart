@@ -1,9 +1,21 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class SupabaseTrueq{
-  static const String url = "https://wgdwsmebguwvelruodwx.supabase.co";
-  static const String anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndnZHdzbWViZ3V3dmVscnVvZHd4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE4MDk3MDYsImV4cCI6MjA1NzM4NTcwNn0.tQAzl7vvoeGOrgcSWQP0Gw7xDeL1n4x6bEF7m7br8HE";
-  static const String service_role = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndnZHdzbWViZ3V3dmVscnVvZHd4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MTgwOTcwNiwiZXhwIjoyMDU3Mzg1NzA2fQ.tTzVCJ735tPv9Vp2BjK5ZzWLwJgDpspONKn7jbbCiOc";
   static const String passwordHost = "change-password";
   static const String mailConfirmHost = "confirm-email";
   static const String redirectPassword = "trueq://change-password";
   static const String redirectMailConfirm = "trueq://confirm-email";
+  static String get url => dotenv.env['SUPABASE_URL'] ?? '';
+  static String get anonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
+  static String get serviceRole => dotenv.env['SUPABASE_SERVICE_ROLE_KEY'] ?? '';
+}
+
+class GoogleAuthKeys {
+  static String get webClientId => dotenv.env['GOOGLE_WEB_CLIENT_ID'] ?? '';
+  static String get iosClientId => dotenv.env['GOOGLE_IOS_CLIENT_ID'] ?? '';
+}
+
+class OneSignalKeys {
+  static String get appId => dotenv.env['ONESIGNAL_APP_ID'] ?? '';
+  static String get restApiKey => dotenv.env['ONESIGNAL_REST_API_KEY'] ?? '';
 }
